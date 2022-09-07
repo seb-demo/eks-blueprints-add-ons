@@ -169,3 +169,7 @@ smbCsiDriver:
 # Chaos Mesh Values
 chaosMesh:
   enable: false
+
+# Cilium Mesh Values
+cilium:
+  enable: false
