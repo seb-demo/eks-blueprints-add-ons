@@ -21,8 +21,14 @@ spec:
         value: {{ .Values.region }}
       - name: external-dns.serviceAccount.name
         value: {{ .Values.externalDns.serviceAccountName }}
-      - name: external-dns.zoneIdFilters[0]
+      {{ if .Values.externalDns.awspolicy }}
+      - name: external-dns.aws.policy
         value: {{ .Values.externalDns.zoneIdFilter }}
+      {{ end }}
+      {{ if .Values.externalDns.awszoneType }}
+      - name: external-dns.aws.zoneType
+        value: {{ .Values.externalDns.awszoneType }}
+      {{ end }}
   destination:
     server: https://kubernetes.default.svc
     namespace: external-dns
