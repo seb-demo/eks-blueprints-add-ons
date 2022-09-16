@@ -21,10 +21,14 @@ spec:
         value: {{ .Values.region }}
       - name: external-dns.serviceAccount.name
         value: {{ .Values.externalDns.serviceAccountName }}
-      {{ if .Values.externalDns.awspolicy }}
-      - name: external-dns.aws.policy
+      {{ if .Values.externalDns.zoneIdFilter }}
+      - name: external-dns.zoneIdFilters[0]
         value: {{ .Values.externalDns.zoneIdFilter }}
       {{ end }}
+      {{ if .Values.externalDns.awspolicy }}
+      - name: external-dns.aws.policy
+        value: {{ .Values.externalDns.policy }}
+      {{ end }}      
       {{ if .Values.externalDns.awszoneType }}
       - name: external-dns.aws.zoneType
         value: {{ .Values.externalDns.awszoneType }}
