@@ -25,10 +25,6 @@ spec:
       - name: external-dns.zoneIdFilters[0]
         value: {{ .Values.externalDns.zoneIdFilter }}
       {{ end }}
-      {{ if .Values.externalDns.awspolicy }}
-      - name: external-dns.aws.policy
-        value: {{ .Values.externalDns.awspolicy }}
-      {{ end }}      
       {{ if .Values.externalDns.awszoneType }}
       - name: external-dns.aws.zoneType
         value: {{ .Values.externalDns.awszoneType }}
